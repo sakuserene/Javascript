@@ -378,3 +378,284 @@ Before Module 7
 You have now reached an important milestone.
 You understand manual callbacks and callbacks used by loops.
 In Module 7, we'll build on this knowledge to explore the most commonly used array methods—map(), filter(), find(), some(), every(), reduce(), and sort()—one at a time. You'll see that each one uses callbacks for a different purpose, and you'll learn why each method exists instead of trying to use forEach() for everything.
+
+
+
+Excellent! Here are the answers with explanations.
+Easy Question 1
+Question
+Create an array of five colors and print each color using forEach().
+Answer
+const colors = ["Red", "Blue", "Green", "Yellow", "Purple"];
+
+function printColor(color) {
+    console.log(color);
+}
+
+colors.forEach(printColor);
+Output
+Red
+Blue
+Green
+Yellow
+Purple
+Step-by-Step Execution
+colors.forEach(printColor)
+
+↓
+
+JavaScript takes "Red"
+
+↓
+
+printColor("Red")
+
+↓
+
+Red
+
+↓
+
+JavaScript takes "Blue"
+
+↓
+
+printColor("Blue")
+
+↓
+
+Blue
+
+↓
+
+...
+
+↓
+
+Finished
+Notice that JavaScript calls printColor() once for each color.
+Easy Question 2
+Question
+Create an array of names and print "Hello, <name>" for each person using a callback.
+Answer
+const names = ["Adi", "John", "Mary", "Peter"];
+
+function greet(name) {
+    console.log("Hello, " + name);
+}
+
+names.forEach(greet);
+Output
+Hello, Adi
+Hello, John
+Hello, Mary
+Hello, Peter
+Execution Flow
+names.forEach(greet)
+
+↓
+
+greet("Adi")
+
+↓
+
+Hello, Adi
+
+↓
+
+greet("John")
+
+↓
+
+Hello, John
+
+↓
+
+...
+Easy Question 3
+Question
+Create an array of numbers and print their doubles using forEach().
+Answer
+const numbers = [2, 4, 6, 8, 10];
+
+function double(number) {
+    console.log(number * 2);
+}
+
+numbers.forEach(double);
+Output
+4
+8
+12
+16
+20
+Execution Flow
+numbers.forEach(double)
+
+↓
+
+double(2)
+
+↓
+
+4
+
+↓
+
+double(4)
+
+↓
+
+8
+
+↓
+
+...
+
+↓
+
+Finished
+Medium Question 1
+Question
+Create an array of student names and write two different callbacks:
+One prints the names in uppercase.
+One prints "Present: <name>".
+Use forEach() with each callback.
+Answer
+const students = ["Alice", "Brian", "Carol", "David"];
+
+function printUppercase(student) {
+    console.log(student.toUpperCase());
+}
+
+function markPresent(student) {
+    console.log("Present: " + student);
+}
+
+students.forEach(printUppercase);
+
+students.forEach(markPresent);
+Output
+ALICE
+BRIAN
+CAROL
+DAVID
+
+Present: Alice
+Present: Brian
+Present: Carol
+Present: David
+Why It Works
+The same array is used twice.
+The only thing that changes is the callback.
+First callback:
+Alice
+
+↓
+
+ALICE
+Second callback:
+Alice
+
+↓
+
+Present: Alice
+forEach() doesn't change.
+Only the callback changes.
+Medium Question 2
+Question
+Create an array of prices and print each price with a currency symbol (KSh).
+Answer
+const prices = [100, 250, 500, 750];
+
+function showPrice(price) {
+    console.log("KSh " + price);
+}
+
+prices.forEach(showPrice);
+Output
+KSh 100
+KSh 250
+KSh 500
+KSh 750
+Flow
+prices.forEach(showPrice)
+
+↓
+
+showPrice(100)
+
+↓
+
+KSh 100
+
+↓
+
+showPrice(250)
+
+↓
+
+KSh 250
+
+↓
+
+...
+Medium Question 3
+Question
+Explain why forEach() needs a callback instead of knowing what to do by itself.
+Answer
+forEach() only knows how to loop through an array. It does not know what action you want to perform on each item.
+For example, with the same array:
+const numbers = [1, 2, 3];
+You might want to:
+Print each number.
+Double each number.
+Square each number.
+Display "Number: 1".
+Save each number to a database.
+Send each number to another function.
+These are all different actions.
+If forEach() tried to decide what to do, it wouldn't know which action you wanted.
+Instead, you provide the instructions by passing a callback.
+For example:
+numbers.forEach(printNumber);
+or
+numbers.forEach(doubleNumber);
+or
+numbers.forEach(squareNumber);
+The loop stays the same, but the behavior changes depending on the callback you pass.
+Simple Analogy
+Think of forEach() as a mail carrier delivering letters to every house on a street.
+The mail carrier knows which houses to visit (looping through the array), but doesn't know what message should be delivered.
+You provide the message (the callback).
+forEach()
+
+↓
+
+House 1
+
+↓
+
+Deliver your message
+
+↓
+
+House 2
+
+↓
+
+Deliver your message
+
+↓
+
+House 3
+
+↓
+
+Deliver your message
+Key takeaway: forEach() is responsible for visiting every item, while the callback is responsible for deciding what to do with each item. This separation makes your code flexible and reusable.
+
+
+
+
+
