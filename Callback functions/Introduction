@@ -1,5 +1,5 @@
 Excellent. We'll follow this as our course structure and move one module at a time. I won't skip steps, and I won't assume you already understand callbacks.
-Module 1 — What is a Callback?
+'''Module 1 — What is a Callback?'''
 Before writing any JavaScript, let's answer one question:
 Why did callback functions even need to exist?
 Understanding this makes the rest of the course much easier.
