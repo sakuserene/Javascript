@@ -1,0 +1,510 @@
+# Module 27 – Understanding HTTP Methods (GET, POST, PUT, PATCH, and DELETE)
+Congratulations!
+You now know how to:
+Create Callback Functions
+Work with Promises
+Use .then(), .catch(), and .finally()
+Use async and await
+Handle errors with try...catch
+Fetch data from a server using the Fetch API
+Now it's time to learn HTTP Methods.
+Every time your frontend communicates with a backend, it sends an HTTP request.
+But not all requests do the same thing.
+Sometimes you want to:
+Read data
+Create data
+Update data
+Delete data
+JavaScript tells the server what it wants by using an HTTP Method.
+Lesson Objectives
+By the end of this lesson, you will understand:
+What HTTP Methods are.
+Why different HTTP methods exist.
+The five most common methods:
+GET
+POST
+PUT
+PATCH
+DELETE
+How CRUD maps to HTTP methods.
+How to use each method with fetch().
+Real-world examples of each method.
+What is an HTTP Method?
+An HTTP Method tells the server:
+"This is what I want to do."
+Think of it as the purpose of your request.
+Example:
+Browser
+    │
+    ▼
+"I want to READ users."
+
+or
+
+"I want to CREATE a student."
+
+or
+
+"I want to DELETE a product."
+The server looks at the HTTP Method and decides what action to perform.
+Real-World Analogy – Library
+Imagine a library.
+You can perform different actions.
+Borrow a book
+
+Return a book
+
+Update your membership details
+
+Replace your membership details
+
+Cancel your membership
+Each action is different.
+Similarly, HTTP uses different methods for different tasks.
+CRUD Operations
+Most applications perform four basic operations.
+CRUD stands for:
+C → Create
+
+R → Read
+
+U → Update
+
+D → Delete
+Every web application performs CRUD.
+Examples:
+Facebook
+Create a post
+Read posts
+Update a post
+Delete a post
+Student Management System
+Create student
+Read students
+Update student
+Delete student
+Shopping Cart
+Add product
+View products
+Update quantity
+Remove product
+CRUD and HTTP Methods
+CRUD
+HTTP Method
+Create
+POST
+Read
+GET
+Update
+PUT or PATCH
+Delete
+DELETE
+Memorize this table.
+You'll use it every day as a web developer.
+GET – Reading Data
+GET is used when you want to retrieve data.
+Example:
+Give me all students.
+
+Give me all products.
+
+Give me all books.
+Example using Fetch:
+fetch("https://jsonplaceholder.typicode.com/users")
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(users) {
+        console.log(users);
+    });
+This request only reads data.
+Nothing is changed on the server.
+Visual Flow – GET
+Browser
+
+↓
+
+GET Request
+
+↓
+
+Server
+
+↓
+
+Retrieve Data
+
+↓
+
+Return Data
+
+↓
+
+Browser Displays Data
+Real-World Example – GET
+Suppose you open YouTube.
+What happens?
+Open YouTube
+
+↓
+
+GET Videos
+
+↓
+
+Server Sends Videos
+
+↓
+
+Display Videos
+You're only reading data.
+POST – Creating Data
+POST creates new data.
+Example:
+You register a new account.
+Fill Registration Form
+
+↓
+
+POST Request
+
+↓
+
+Server Saves User
+
+↓
+
+User Created
+Example:
+fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        title: "Learning JavaScript",
+        body: "Callbacks are awesome!",
+        userId: 1
+    })
+})
+.then(function(response) {
+    return response.json();
+})
+.then(function(data) {
+    console.log(data);
+});
+Notice two new things:
+method: "POST"
+and
+body: JSON.stringify(...)
+We'll explain JSON.stringify() shortly.
+Why Do We Use JSON.stringify()?
+JavaScript objects cannot be sent directly over HTTP.
+Example:
+{
+    name: "Adi",
+    age: 25
+}
+The server expects text.
+So JavaScript converts the object into JSON text.
+Example:
+JSON.stringify({
+    name: "Adi",
+    age: 25
+});
+Result:
+{
+    "name": "Adi",
+    "age": 25
+}
+Think of it like putting a letter into an envelope before mailing it.
+PUT – Replacing Data
+PUT replaces an entire resource.
+Suppose the server has:
+{
+    id: 1,
+    name: "John",
+    age: 20
+}
+You send:
+{
+    name: "Peter",
+    age: 25
+}
+The old data becomes:
+{
+    name: "Peter",
+    age: 25
+}
+Everything is replaced.
+Example:
+fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        id: 1,
+        title: "Updated Title",
+        body: "Updated Content",
+        userId: 1
+    })
+});
+PATCH – Updating Part of the Data
+PATCH updates only selected fields.
+Suppose we have:
+{
+    name: "John",
+    age: 20,
+    city: "Nairobi"
+}
+You only want to change the city.
+{
+    city: "Mombasa"
+}
+Everything else stays the same.
+Example:
+fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "PATCH",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        title: "New Title"
+    })
+});
+Only the title changes.
+PUT vs PATCH
+Imagine updating a student record.
+Original:
+{
+    name: "Alice",
+    age: 21,
+    course: "Computer Science"
+}
+Using PUT:
+{
+    name: "Alice",
+    age: 22,
+    course: "Software Engineering"
+}
+The entire record is replaced.
+Using PATCH:
+{
+    age: 22
+}
+Only the age changes.
+DELETE – Removing Data
+DELETE removes data.
+Example:
+Delete Student
+
+↓
+
+DELETE Request
+
+↓
+
+Server Removes Student
+
+↓
+
+Student Deleted
+Example:
+fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "DELETE"
+})
+.then(function(response) {
+    console.log(response.status);
+});
+Visual Summary
+GET
+↓
+
+Read Data
+
+
+POST
+↓
+
+Create Data
+
+
+PUT
+↓
+
+Replace Entire Data
+
+
+PATCH
+↓
+
+Update Part of Data
+
+
+DELETE
+↓
+
+Remove Data
+Real-World Examples
+Student Management System
+View Students
+↓
+
+GET
+
+
+Add Student
+↓
+
+POST
+
+
+Update Student
+↓
+
+PATCH
+
+
+Replace Student Record
+↓
+
+PUT
+
+
+Delete Student
+↓
+
+DELETE
+Online Shopping
+View Products
+↓
+
+GET
+
+
+Place Order
+↓
+
+POST
+
+
+Update Shipping Address
+↓
+
+PATCH
+
+
+Replace Shopping Cart
+↓
+
+PUT
+
+
+Cancel Order
+↓
+
+DELETE
+Social Media
+Read Posts
+↓
+
+GET
+
+
+Create Post
+↓
+
+POST
+
+
+Edit Caption
+↓
+
+PATCH
+
+
+Replace Profile Information
+↓
+
+PUT
+
+
+Delete Post
+↓
+
+DELETE
+Common Beginner Mistakes
+Mistake 1
+Using GET to create data.
+Wrong.
+GET should only read data.
+Mistake 2
+Forgetting the request body in POST.
+Wrong:
+fetch(url, {
+    method: "POST"
+});
+Usually, POST requests need data to send.
+Mistake 3
+Forgetting Content-Type.
+Correct:
+headers: {
+    "Content-Type": "application/json"
+}
+This tells the server that you're sending JSON.
+Mistake 4
+Confusing PUT and PATCH.
+Remember:
+PUT replaces everything.
+PATCH updates only selected fields.
+Summary
+Today you learned:
+HTTP Methods tell the server what action to perform.
+GET reads data.
+POST creates data.
+PUT replaces existing data.
+PATCH updates part of existing data.
+DELETE removes data.
+CRUD maps directly to these HTTP methods.
+JSON.stringify() converts JavaScript objects into JSON text before sending them to the server.
+Knowledge Check
+Answer these questions before moving on.
+What is an HTTP Method?
+Which HTTP Method is used to retrieve data?
+Which HTTP Method creates new data?
+What is the difference between PUT and PATCH?
+Which HTTP Method deletes data?
+Why do we use JSON.stringify()?
+Why do we set "Content-Type": "application/json"?
+Practice Exercises
+Easy
+Write a GET request to retrieve all users from:
+https://jsonplaceholder.typicode.com/users
+Write a POST request that creates a new student with:
+name: "Brian"
+age: 19
+Explain the difference between GET and POST.
+Medium
+Write a PATCH request that updates only the title of a post.
+Write a PUT request that replaces an entire student record.
+Write a DELETE request that deletes post number 10.
+Challenge
+Suppose you are building a Library Management System.
+For each action below, write the correct HTTP Method.
+Display all books.
+Add a new book.
+Update only the book's title.
+Replace the entire book record.
+Delete a book.
+Explain why you chose each method.
+What's Next?
+In Module 28, you'll learn about REST APIs and RESTful Architecture.
+You'll learn:
+What REST means.
+What makes an API RESTful.
+Resources and endpoints.
+URL structure in REST APIs.
+HTTP status codes (200, 201, 400, 401, 403, 404, 500, etc.).
+Best practices for designing and consuming REST APIs.
+How Django REST Framework and modern backend frameworks implement REST APIs.
