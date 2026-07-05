@@ -6,7 +6,7 @@ Understanding this makes the rest of the course much easier.
 Imagine JavaScript Without Callbacks
 Suppose you order food at a restaurant.
 Without callbacks, you might do this:
-Walk into restaurant
+```Walk into restaurant
 
 ↓
 
@@ -40,6 +40,7 @@ Food is ready
 
 Eat
 While waiting...
+```
 You cannot:
 Talk to friends
 Read your phone
