@@ -1,0 +1,60 @@
+---
+course: JavaScript Beginner to Professional Mastery
+module: Document Object Model (DOM)
+part: 1
+subtopic: Introduction to the Browser Event System
+title: DOM Events - Part 1 - Introduction to DOM Events and the Browser
+  Event System
+topic: DOM Events
+---
+
+# DOM Events --- Part 1
+
+> This is the first lesson file for the DOM Events topic.
+
+## Overview
+
+In this lesson you will learn:
+
+-   What DOM Events are
+-   Why events exist
+-   Event-driven programming
+-   The relationship between the browser and JavaScript
+-   How the browser detects user actions
+-   The high-level lifecycle of an event
+-   Browser event sources
+-   Mental models for understanding the event system
+
+## Event lifecycle (high level)
+
+``` text
+User Action
+    ↓
+Operating System
+    ↓
+Browser detects action
+    ↓
+Browser creates Event Object
+    ↓
+Event is scheduled
+    ↓
+JavaScript listener executes
+    ↓
+DOM updates
+    ↓
+Browser renders updated page
+```
+
+## Key ideas
+
+-   The browser---not JavaScript---detects events.
+-   JavaScript reacts after the browser notifies it.
+-   Every interaction creates a new Event Object.
+-   Modern web applications are event-driven rather than continuously
+    polling.
+
+## Continuation
+
+This lesson continues in the next file:
+
+**DOM-Events-Part-1-Section-2.md**
