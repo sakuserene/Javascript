@@ -366,32 +366,21 @@ A data type describes the kind of value being used. JavaScript has seven primiti
 
 ```text
 JavaScript Values
-â”œâ”€â”€ Primitive Types
-â”‚   â”œâ”€â”€ String
-â”‚   â”œâ”€â”€ Number
-â”‚   â”œâ”€â”€ Boolean
-â”‚   â”œâ”€â”€ Undefined
-â”‚   â”œâ”€â”€ Null
-â”‚   â”œâ”€â”€ BigInt
-â”‚   â””â”€â”€ Symbol
-â””â”€â”€ Object Type
-    â”œâ”€â”€ Plain objects
-    â”œâ”€â”€ Arrays
-    â”œâ”€â”€ Functions (callable objects)
-    â”œâ”€â”€ Dates
-    â”œâ”€â”€ Maps
-    â””â”€â”€ Sets
-```
-
-### 4.1 String
-
-A string represents textual data.
-
-```javascript
-let firstName = "Alice";
-let lastName = 'Johnson';
-let greeting = `Hello ${firstName}`;
-console.log(greeting);
+|-- Primitive Types
+|   |-- String
+|   |-- Number
+|   |-- Boolean
+|   |-- Undefined
+|   |-- Null
+|   |-- BigInt
+|   \-- Symbol
+\-- Object Type
+    |-- Plain objects
+    |-- Arrays
+    |-- Functions (callable objects)
+    |-- Dates
+    |-- Maps
+    \-- Sets
 ```
 
 **Output:**
